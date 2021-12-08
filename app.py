@@ -99,7 +99,6 @@ df_train = data[['Date','Close']]
 df_train = df_train.rename(columns={"Date": "ds", "Close": "y"})
 
 m = Prophet(changepoint_prior_scale=0.1,seasonality_prior_scale=6)
-m.add_country_holidays(country_name='US')
 m.fit(df_train)
 future = m.make_future_dataframe(periods=period)
 forecast = m.predict(future)

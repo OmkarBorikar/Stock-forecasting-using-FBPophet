@@ -98,7 +98,7 @@ period = n_years * 365 # convert to no. of days
 df_train = data[['Date','Close']]
 df_train = df_train.rename(columns={"Date": "ds", "Close": "y"})
 
-m = Prophet(changepoint_prior_scale=0.1,seasonality_prior_scale=6)
+m = Prophet(seasonality_prior_scale=6)
 m.fit(df_train)
 future = m.make_future_dataframe(periods=period)
 forecast = m.predict(future)
